@@ -10,11 +10,10 @@ module.exports = {
     },
     
     // Configuração para o plugin de populate-deep
-    'populate-deep': {
-      enabled: true, // Habilita o plugin
-      config: {
-        depth: 5, // Define o nível de profundidade das relações que serão populadas
-      },
-    },
+    'strapi-plugin-populate-deep': {
+    config: {
+      defaultDepth: 3, // Default is 5
+    }
+  },
   };
   
