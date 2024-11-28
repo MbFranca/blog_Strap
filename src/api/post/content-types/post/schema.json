@@ -4,7 +4,8 @@
   "info": {
     "singularName": "post",
     "pluralName": "posts",
-    "displayName": "post"
+    "displayName": "post",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,14 +14,6 @@
   "attributes": {
     "tittle": {
       "type": "string",
-      "required": true
-    },
-    "media": {
-      "allowedTypes": [
-        "images"
-      ],
-      "type": "media",
-      "multiple": false,
       "required": true
     },
     "content": {
@@ -43,6 +36,14 @@
       "relation": "manyToOne",
       "target": "api::categorie.categorie",
       "inversedBy": "posts"
+    },
+    "cover": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
     }
   }
 }

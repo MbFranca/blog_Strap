@@ -431,6 +431,7 @@ export interface ApiCategorieCategorie extends Struct.CollectionTypeSchema {
 export interface ApiPostPost extends Struct.CollectionTypeSchema {
   collectionName: 'posts';
   info: {
+    description: '';
     displayName: 'post';
     pluralName: 'posts';
     singularName: 'post';
@@ -445,13 +446,13 @@ export interface ApiPostPost extends Struct.CollectionTypeSchema {
       'api::categorie.categorie'
     >;
     content: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    cover: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::post.post'> &
       Schema.Attribute.Private;
-    media: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'tittle'> & Schema.Attribute.Required;
     tittle: Schema.Attribute.String & Schema.Attribute.Required;
