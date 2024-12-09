@@ -9,10 +9,9 @@ export default ({ env }: { env: EnvFunction }) => {
   const envBool = (key: string, defaultValue: boolean): boolean =>
     env(key, defaultValue) === 'true';
 
-  const client = env('DATABASE_CLIENT', 'sqlite');
-
-  const connections = {
-    postgres: {
+  return {
+    connection: {
+      client: 'postgres',
       connection: {
         connectionString: env('DATABASE_URL'),
         host: env('DATABASE_HOST', 'localhost'),
@@ -26,24 +25,6 @@ export default ({ env }: { env: EnvFunction }) => {
         schema: env('DATABASE_SCHEMA', 'public'),
       },
       pool: { min: 2, max: 10 },
-    },
-    sqlite: {
-      connection: {
-        filename: path.join(
-          __dirname,
-          '..',
-          '..',
-          env('DATABASE_FILENAME', '.tmp/data.db')
-        ),
-      },
-      useNullAsDefault: true,
-    },
-  };
-
-  return {
-    connection: {
-      client,
-      ...connections[client],
       acquireConnectionTimeout: envInt('DATABASE_CONNECTION_TIMEOUT', 60000),
     },
   };
